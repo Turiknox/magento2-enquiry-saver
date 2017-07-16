@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_EnquirySaver
+
+ * @category   Turiknox
+ * @package    Turiknox_EnquirySaver
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-enquiry-saver/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="contact">
+            <group id="contact">
+                <field id="enable_enquirysaver" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Save Contact Enquiries in the Magento Admin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Set this option to 'Yes' to start saving contact form enquiries to the database.<br/>
+                            You must also set the 'Enable Contact Us' option above to Yes]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

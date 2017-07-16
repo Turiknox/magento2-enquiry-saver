@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_EnquirySaver
+
+ * @category   Turiknox
+ * @package    Turiknox_EnquirySaver
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-enquiry-saver/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Turiknox_EnquirySaver::contact_enquiries"
+            title="Contact Form Enquiries"
+            translate="title"
+            module="Turiknox_EnquirySaver"
+            sortOrder="75"
+            parent="Magento_Backend::marketing_communications"
+            action="enquirysaver/index"
+            resource="Turiknox_EnquirySaver::contact_enquiries"
+        />
+    </menu>
+</config>

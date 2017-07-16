@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_EnquirySaver
+
+ * @category   Turiknox
+ * @package    Turiknox_EnquirySaver
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-enquiry-saver/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_postdispatch_contact_index_post">
+        <observer name="save_contact_enquiry" instance="Turiknox\EnquirySaver\Observer\Enquiry\Save"/>
+    </event>
+</config>

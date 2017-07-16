@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_EnquirySaver
+
+ * @category   Turiknox
+ * @package    Turiknox_EnquirySaver
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-enquiry-saver/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Turiknox_EnquirySaver" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Contact"/>
+        </sequence>
+    </module>
+</config>
