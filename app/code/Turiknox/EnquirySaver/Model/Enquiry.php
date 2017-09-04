@@ -39,16 +39,17 @@ class Enquiry extends AbstractModel implements EnquiryInterface
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
     /**
      * Initialise resource model
+     * @codingStandardsIgnoreStart
      */
     protected function _construct()
     {
+        // @codingStandardsIgnoreEnd
         $this->_init('Turiknox\EnquirySaver\Model\ResourceModel\Enquiry');
     }
 

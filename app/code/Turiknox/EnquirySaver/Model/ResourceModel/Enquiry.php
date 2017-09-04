@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreFile
 /*
  * Turiknox_EnquirySaver
 
@@ -21,12 +22,12 @@ class Enquiry extends AbstractDb
     /**
      * @var DateTime
      */
-    protected $_date;
+    protected $date;
 
     /**
      * @var StoreManagerInterface
      */
-    protected $_storeManagerInterface;
+    protected $storeManagerInterface;
 
     /**
      * Enquiry constructor.
@@ -39,9 +40,9 @@ class Enquiry extends AbstractDb
         DateTime $dateTime,
         StoreManagerInterface $storeManager
     ) {
-        $this->_date = $dateTime;
-        $this->_storeManagerInterface = $storeManager;
         parent::__construct($context);
+        $this->date = $dateTime;
+        $this->storeManagerInterface = $storeManager;
     }
 
     /**
@@ -58,9 +59,9 @@ class Enquiry extends AbstractDb
      */
     protected function _beforeSave(AbstractModel $object)
     {
-        $object->setStoreId($this->_storeManagerInterface->getStore()->getId());
+        $object->setStoreId($this->storeManagerInterface->getStore()->getId());
         if ($object->isObjectNew()) {
-            $object->setCreatedAt($this->_date->gmtDate());
+            $object->setCreatedAt($this->date->gmtDate());
         }
         return parent::_beforeSave($object);
     }

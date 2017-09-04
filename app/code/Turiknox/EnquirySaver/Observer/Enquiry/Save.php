@@ -20,7 +20,6 @@ use Turiknox\EnquirySaver\Api\EnquiryRepositoryInterface;
 use Turiknox\EnquirySaver\Api\Data\EnquiryInterface;
 use Turiknox\EnquirySaver\Model\EnquiryFactory;
 
-
 class Save implements ObserverInterface
 {
     const XML_PATH_CONTACTS_ENABLED     = 'contact/contact/enabled';
@@ -65,8 +64,7 @@ class Save implements ObserverInterface
         ScopeConfigInterface $scopeConfig,
         EnquiryRepositoryInterface $enquiryRepositoryInterface,
         EnquiryFactory $enquiryFactory
-    )
-    {
+    ) {
         $this->request = $request;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->scopeConfig = $scopeConfig;
@@ -87,7 +85,6 @@ class Save implements ObserverInterface
             }
             $model = $this->enquiryFactory->create();
             $this->dataObjectHelper->populateWithArray($model, $post, EnquiryInterface::class);
-
             $this->enquiryRepository->save($model);
         }
     }

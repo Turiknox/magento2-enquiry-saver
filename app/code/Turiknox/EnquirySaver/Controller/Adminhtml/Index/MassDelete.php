@@ -25,27 +25,27 @@ class MassDelete extends EnquirySaver
     /**
      * @var Filter
      */
-    protected $_filter;
+    protected $filter;
 
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected $collectionFactory;
 
     /**
      * @var ForwardFactory
      */
-    protected $_resultForwardFactory;
+    protected $resultForwardFactory;
 
     /**
      * @var string
      */
-    protected $_successMessage;
+    protected $successMessage;
 
     /**
      * @var string
      */
-    protected $_errorMessage;
+    protected $errorMessage;
 
     /**
      * MassDelete constructor.
@@ -71,10 +71,10 @@ class MassDelete extends EnquirySaver
         $errorMessage
     ) {
         parent::__construct($registry, $enquiryRepository, $resultPageFactory, $resultForwardFactory, $context);
-        $this->_filter            = $filter;
-        $this->_collectionFactory = $collectionFactory;
-        $this->_successMessage    = $successMessage;
-        $this->_errorMessage      = $errorMessage;
+        $this->filter            = $filter;
+        $this->collectionFactory = $collectionFactory;
+        $this->successMessage    = $successMessage;
+        $this->errorMessage      = $errorMessage;
     }
 
     /**
@@ -85,16 +85,16 @@ class MassDelete extends EnquirySaver
     public function execute()
     {
         try {
-            $collection = $this->_filter->getCollection($this->_collectionFactory->create());
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
             $collectionSize = $collection->getSize();
             foreach ($collection as $enquiry) {
-                $this->_enquiryRepository->delete($enquiry);
+                $this->enquiryRepository->delete($enquiry);
             }
-            $this->messageManager->addSuccessMessage(__($this->_successMessage, $collectionSize));
+            $this->messageManager->addSuccessMessage(__($this->successMessage, $collectionSize));
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         } catch (\Exception $e) {
-            $this->messageManager->addExceptionMessage($e, __($this->_errorMessage));
+            $this->messageManager->addExceptionMessage($e, __($this->errorMessage));
         }
         $redirectResult = $this->resultRedirectFactory->create();
         $redirectResult->setPath('enquirysaver/index');

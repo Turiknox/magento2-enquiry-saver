@@ -20,7 +20,7 @@ class Index extends EnquirySaver
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Turiknox_EnquirySaver::contact_enquiries');
         $resultPage->getConfig()->getTitle()->prepend(__('Contact Form Enquiries'));
         $resultPage->addBreadcrumb(__('Contact Form Enquiries'), __('Contact Form Enquiries'));

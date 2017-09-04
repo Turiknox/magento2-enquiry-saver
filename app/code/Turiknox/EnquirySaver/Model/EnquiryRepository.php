@@ -26,38 +26,37 @@ class EnquiryRepository implements EnquiryRepositoryInterface
     /**
      * @var array
      */
-    protected $_instances = [];
+    protected $instances = [];
     /**
      * @var ResourceEnquiry
      */
-    protected $_resource;
+    protected $resource;
 
     /**
      * @var EnquiryCollectionFactory
      */
-    protected $_enquiryCollectionFactory;
+    protected $enquiryCollectionFactory;
 
     /**
      * @var EnquiryInterfaceFactory
      */
-    protected $_enquiryInterfaceFactory;
+    protected $enquiryInterfaceFactory;
 
     /**
      * @var DataObjectHelper
      */
-    protected $_dataObjectHelper;
+    protected $dataObjectHelper;
 
     public function __construct(
         ResourceEnquiry $resource,
         EnquiryCollectionFactory $enquiryCollectionFactory,
         EnquiryInterfaceFactory $enquiryInterfaceFactory,
         DataObjectHelper $dataObjectHelper
-    )
-    {
-        $this->_resource = $resource;
-        $this->_enquiryCollectionFactory = $enquiryCollectionFactory;
-        $this->_enquiryInterfaceFactory = $enquiryInterfaceFactory;
-        $this->_dataObjectHelper = $dataObjectHelper;
+    ) {
+        $this->resource = $resource;
+        $this->enquiryCollectionFactory = $enquiryCollectionFactory;
+        $this->enquiryInterfaceFactory = $enquiryInterfaceFactory;
+        $this->dataObjectHelper = $dataObjectHelper;
     }
 
     /**
@@ -68,8 +67,8 @@ class EnquiryRepository implements EnquiryRepositoryInterface
     public function save(EnquiryInterface $enquiry)
     {
         try {
-            /** @var EnquiryInterface|\Magento\Framework\Model\AbstractModel $data */
-            $this->_resource->save($enquiry);
+            /** @var EnquiryInterface|\Magento\Framework\Model\AbstractModel $enquiry */
+            $this->resource->save($enquiry);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the enquiry: %1',
@@ -88,16 +87,16 @@ class EnquiryRepository implements EnquiryRepositoryInterface
      */
     public function getById($enquiryId)
     {
-        if (!isset($this->_instances[$enquiryId])) {
+        if (!isset($this->instances[$enquiryId])) {
             /** @var \Turiknox\EnquirySaver\Api\Data\EnquiryInterface|\Magento\Framework\Model\AbstractModel $enquiry */
-            $enquiry = $this->_enquiryInterfaceFactory->create();
-            $this->_resource->load($enquiry, $enquiryId);
+            $enquiry = $this->enquiryInterfaceFactory->create();
+            $this->resource->load($enquiry, $enquiryId);
             if (!$enquiry->getId()) {
                 throw new NoSuchEntityException(__('Requested enquiry doesn\'t exist'));
             }
-            $this->_instances[$enquiryId] = $enquiry;
+            $this->instances[$enquiryId] = $enquiry;
         }
-        return $this->_instances[$enquiryId];
+        return $this->instances[$enquiryId];
     }
 
     /**
@@ -111,8 +110,8 @@ class EnquiryRepository implements EnquiryRepositoryInterface
         /** @var \Turiknox\EnquirySaver\Api\Data\EnquiryInterface|\Magento\Framework\Model\AbstractModel $enquiry */
         $id = $enquiry->getId();
         try {
-            unset($this->_instances[$id]);
-            $this->_resource->delete($enquiry);
+            unset($this->instances[$id]);
+            $this->resource->delete($enquiry);
         } catch (ValidatorException $e) {
             throw new CouldNotSaveException(__($e->getMessage()));
         } catch (\Exception $e) {
@@ -120,7 +119,7 @@ class EnquiryRepository implements EnquiryRepositoryInterface
                 __('Unable to remove enquiry %1', $id)
             );
         }
-        unset($this->_instances[$id]);
+        unset($this->instances[$id]);
         return true;
     }
 

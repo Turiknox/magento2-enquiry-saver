@@ -25,7 +25,7 @@ class Delete extends EnquirySaver
         $enquiryId = $this->getRequest()->getParam('enquiry_id');
         if ($enquiryId) {
             try {
-                $this->_enquiryRepository->deleteById($enquiryId);
+                $this->enquiryRepository->deleteById($enquiryId);
                 $this->messageManager->addSuccessMessage(__('The enquiry has been deleted.'));
                 $resultRedirect->setPath('enquirysaver/index');
                 return $resultRedirect;

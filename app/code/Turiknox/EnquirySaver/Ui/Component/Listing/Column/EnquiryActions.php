@@ -25,7 +25,7 @@ class EnquiryActions extends Column
      *
      * @var \Magento\Framework\UrlInterface
      */
-    protected $_urlBuilder;
+    protected $urlBuilder;
 
     /**
      * @param ContextInterface $context
@@ -40,10 +40,9 @@ class EnquiryActions extends Column
         UrlInterface $urlBuilder,
         array $components = [],
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $uiComponentFactory, $components, $data);
-        $this->_urlBuilder = $urlBuilder;
+        $this->urlBuilder = $urlBuilder;
     }
 
     /**
@@ -59,7 +58,7 @@ class EnquiryActions extends Column
                 if (isset($item['enquiry_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
-                            'href' => $this->_urlBuilder->getUrl(
+                            'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
                                     'enquiry_id' => $item['enquiry_id']
@@ -68,7 +67,7 @@ class EnquiryActions extends Column
                             'label' => __('Edit')
                         ],
                         'delete' => [
-                            'href' => $this->_urlBuilder->getUrl(
+                            'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
                                     'enquiry_id' => $item['enquiry_id']

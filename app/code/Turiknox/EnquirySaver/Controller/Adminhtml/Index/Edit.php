@@ -19,13 +19,18 @@ class Edit extends EnquirySaver
      */
     public function execute()
     {
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Turiknox_EnquirySaver::contact_enquiries')
             ->addBreadcrumb(__('Enquiries'), __('Enquiries'))
             ->addBreadcrumb(__('Manage Enquiries'), __('Manage Enquiries'));
 
-        $resultPage->addBreadcrumb(__('Enquiry'), __(sprintf('Enquiry: #%s', $this->getRequest()->getParam('enquiry_id'))));
-        $resultPage->getConfig()->getTitle()->prepend(__(sprintf('Enquiry: #%s', $this->getRequest()->getParam('enquiry_id'))));
+        $resultPage->addBreadcrumb(
+            __('Enquiry'),
+            __(sprintf('Enquiry: #%s', $this->getRequest()->getParam('enquiry_id')))
+        );
+        $resultPage->getConfig()->getTitle()->prepend(
+            __(sprintf('Enquiry: #%s', $this->getRequest()->getParam('enquiry_id')))
+        );
 
         return $resultPage;
     }

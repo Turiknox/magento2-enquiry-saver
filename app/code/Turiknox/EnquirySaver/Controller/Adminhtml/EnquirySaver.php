@@ -29,28 +29,28 @@ abstract class EnquirySaver extends Action
      *
      * @var EnquiryRepositoryInterface
      */
-    protected $_enquiryRepository;
+    protected $enquiryRepository;
 
     /**
      * Core registry
      *
      * @var Registry
      */
-    protected $_coreRegistry;
+    protected $coreRegistry;
 
     /**
      * Result Page Factory
      *
      * @var PageFactory
      */
-    protected $_resultPageFactory;
+    protected $resultPageFactory;
 
     /**
      * Result Forward Factory
      *
      * @var ForwardFactory
      */
-    protected $_resultForwardFactory;
+    protected $resultForwardFactory;
 
     /**
      * EnquirySaver constructor.
@@ -67,12 +67,11 @@ abstract class EnquirySaver extends Action
         PageFactory $resultPageFactory,
         ForwardFactory $resultForwardFactory,
         Context $context
-
     ) {
-        $this->_coreRegistry         = $registry;
-        $this->_enquiryRepository    = $enquiryRepository;
-        $this->_resultPageFactory    = $resultPageFactory;
-        $this->_resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
+        $this->coreRegistry         = $registry;
+        $this->enquiryRepository    = $enquiryRepository;
+        $this->resultPageFactory    = $resultPageFactory;
+        $this->resultForwardFactory = $resultForwardFactory;
     }
 }
